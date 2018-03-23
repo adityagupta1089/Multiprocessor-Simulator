@@ -1,6 +1,7 @@
 #ifndef SCHEDULER_H_
 #define SCHEDULER_H_
 
+#include <Processor.hpp>
 #include <TaskGraph.hpp>
 #include <queue>
 #include <vector>
@@ -15,30 +16,32 @@ class Scheduler {
 		};
 
 		struct event {
-				unsigned long long event_time;
+				_time event_time;
 				unsigned task_node_id;
 				event_type type;
+				Cluster* assigned_cluster;
+				int core_id;
 				bool operator<(const event& that) const {
-					return event_time < that.event_time;
+					return event_time > that.event_time;
 				}
 		};
 
 		std::priority_queue<event> events_list;
 
-		std::vector<TaskGraph::TaskNode*> ready_list, wait_list, running_list;
+		std::vector<TaskGraph::TaskNode*> ready_list, wait_list;
 
 		Processor* processor;
 		TaskGraph* current_graph;
 
-		unsigned long long curr_time;
-
 		void handle_task_finish(event _event);
 		void handle_comunication_finish(event _event);
-		void schedule_ready_list();
-		void schedule_next_event();
+		void schedule();
+
+		bool node_ready(TaskGraph::TaskNode*);
 
 	public:
-		Scheduler(Processor* _processor, TaskGraph& graph);
+		Scheduler(Processor* _processor);
+		void assign_graph(TaskGraph& graph);
 		void run();
 
 };

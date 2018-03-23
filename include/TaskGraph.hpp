@@ -22,6 +22,7 @@ struct TaskGraph {
 				bool finished = false;
 				std::vector<TaskEdge*> incoming_edges;
 				std::vector<TaskEdge*> outgoing_edges;
+
 				TaskNode(unsigned id, std::string name, unsigned cost)
 						: task_id(id), task_name(name), task_cost(cost) {
 				}

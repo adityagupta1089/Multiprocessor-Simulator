@@ -17,7 +17,7 @@ int main(int argc, char** argv) {
 
 	read_input(argv[3], graph);
 	processor.execute_tasks(graph);
-	write_statistics(processor);
+	processor.write_statistics();
 
 	return 0;
 }

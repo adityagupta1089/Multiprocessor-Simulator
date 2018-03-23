@@ -1,3 +1,4 @@
+#include <Processor.hpp>
 #include <read_write.hpp>
 #include <TaskGraph.hpp>
 #include <cstdio>
@@ -56,8 +57,4 @@ void read_input(char* file_name, TaskGraph& graph) {
 	}
 
 	in.close();
-}
-
-void write_statistics(Processor& processor) {
-	//TODO
 }

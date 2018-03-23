@@ -2,7 +2,7 @@ IDIR=include
 SDIR=src
 ODIR=bin
 
-CC=clang++
+CC=g++
 CFLAGS=-I $(IDIR) -std=c++11 -Wall -Wextra -pedantic -g
 
 _DEPS = Cluster.hpp Processor.hpp TaskGraph.hpp read_write.hpp Scheduler.hpp
