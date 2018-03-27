@@ -64,9 +64,7 @@ void Scheduler::handle_task_finish(event _event) {
 	for (auto edge : node->outgoing_edges) {
 		auto child = current_graph->nodes[edge->dest_id];
 		if (edge->cost > 0) {
-			/* TODO here communication should be bound to a core and we should
-			 * see if there is a core available and then only send
-			 * communication  message to it */
+			/* TODO simplistic communication done */
 			_time communication_finish_time = processor->get_time()
 					+ edge->cost;
 			printf("Scheduling an event for Communication to Task #%d's "
@@ -81,7 +79,6 @@ void Scheduler::handle_task_finish(event _event) {
 					NULL,
 					0 };
 			events_list.push(communication_finish);
-			printf("__add__ = %llu\n", communication_finish_time);
 		} else if (node_ready(child)) {
 			printf("Adding Task #%d to ready list\n", child->task_id);
 			ready_list.push_back(child);

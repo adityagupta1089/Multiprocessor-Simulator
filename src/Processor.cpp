@@ -33,7 +33,7 @@ void Processor::seek_time(_time time) {
 	curr_time = time;
 }
 
-void Processor::write_statistics() {
+void Processor::print_statistics() {
 	printf("Total time taken: %llu\n", curr_time);
 	int i = 0;
 	for (Cluster* cluster : multiprocessor) {

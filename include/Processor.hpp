@@ -25,7 +25,7 @@ class Processor {
 		_time get_time() const;
 		void seek_time(_time);
 
-		void write_statistics();
+		void print_statistics();
 };
 
 #endif /* PROCESSOR_HPP_ */
